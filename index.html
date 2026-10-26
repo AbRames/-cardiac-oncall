@@ -508,7 +508,7 @@ window.saveSettings=async()=>{
     const el=document.getElementById('aSlotLimit'+i);
     slotLimits.push(el?+el.value||3:3);
   }
-  await update(ref(db,'settings'),{month:+mo,year:+yr,shiftsMode:document.getElementById('aShifts').value,maxSlots:+document.getElementById('aSlots').value,customDays:+document.getElementById('aDays').value||0,slotLimits,daysBeforeOpen:+document.getElementById('aDaysOpen').value||2});
+  await update(ref(db,'settings'),{month:+mo,year:+yr,shiftsMode:document.getElementById('aShifts').value,maxSlots:+document.getElementById('aSlots').value,customDays:+document.getElementById('aDays').value||0,slotLimits,daysBeforeOpen:parseInt(document.getElementById('aDaysOpen').value)||2});
   toast('✅ Saved & published','ok');
 };
 window.toggleLock=async()=>{await update(ref(db,'settings'),{locked:!S.locked});toast(S.locked?'🔓 Unlocked':'🔒 Locked');};
